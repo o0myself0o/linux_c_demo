@@ -38,6 +38,11 @@ void foo_rele(struct foo *fp)
 	}
 }
 
+void foo_free(struct foo *fp)
+{
+	free(fp);
+}
+
 void *ptr_fn(void *arg)
 {
 	struct foo *fp = (struct foo *)arg;
@@ -77,7 +82,7 @@ void main(void)
 
 	printf("3. foo->f_count increment ends.\n");
 
-	foo_rele(fp);
+	foo_free(fp);
 
 	printf("4. after foo_rele, object foo has been freed.\n");
 
